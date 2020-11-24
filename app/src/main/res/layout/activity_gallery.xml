@@ -5,27 +5,39 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingTop="8dp">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_home"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/design_default_color_background"
-        android:text="Home"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:background="@color/indigo"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
+
+        <ImageButton
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/undo"/>
+
+    </RelativeLayout>
+
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F3F3F3"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
 
         android:gravity="center_horizontal"
         android:horizontalSpacing="8dp"

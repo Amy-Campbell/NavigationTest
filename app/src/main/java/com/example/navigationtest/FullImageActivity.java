@@ -7,19 +7,20 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FullImageActivity extends AppCompatActivity {
 
-    private Button btBack;
+    private ImageButton btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_image);
 
-        btBack = (Button) findViewById(R.id.button_home);
+        btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){
 

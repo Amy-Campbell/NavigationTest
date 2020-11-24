@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -27,13 +28,13 @@ public class GalleryActivity extends AppCompatActivity {
             "Gregory in his Navy uniform",
             "Name13"};
 
-    private Button btBack;
+    private ImageButton btBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
-        btBack = (Button) findViewById(R.id.button_home);
+        btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){
 

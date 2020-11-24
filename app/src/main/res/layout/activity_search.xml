@@ -7,6 +7,30 @@
     android:orientation="vertical"
     tools:context=".SearchActivity">
 
+    <RelativeLayout
+        android:id="@+id/top_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/indigo"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
+
+        <ImageButton
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/undo"/>
+
+    </RelativeLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
