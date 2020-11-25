@@ -42,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
                 launchSearch();
             }
         });
+        btCamera.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                launchCamera();
+            }
+        });
 
     }
 
@@ -52,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void launchSearch(){
         Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+
+    }
+    private void launchCamera(){
+        Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);
 
     }
