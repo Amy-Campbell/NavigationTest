@@ -13,8 +13,11 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +35,18 @@ public class CameraActivity extends AppCompatActivity {
 
     Context context;
     Button btOpen;
+    Button btSave;
+    Button btPlay;
+    Button btStop;
+    Button btRecord;
     Activity activity;
     ImageButton btBack;
+
     private ImageView imageView;
+    MediaPlayer mediaPlayer = new MediaPlayer();
+    MediaRecorder mediaRecorder = new MediaRecorder();
+    private static String fileName = null;
+    private static final String LOG_TAG = "AudioRecordTest";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +57,10 @@ public class CameraActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         btOpen = findViewById(R.id.bt_open);
         btBack = (ImageButton) findViewById(R.id.button_home);
+        btSave = findViewById(R.id.bt_save);
+        btPlay = findViewById(R.id.bt_play);
+        btStop = findViewById(R.id.bt_stop);
+        btRecord = findViewById(R.id.bt_record);
 
         btBack.setOnClickListener(new View.OnClickListener(){
 
@@ -54,15 +70,49 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 100);
+        if (ContextCompat.checkSelfPermission(CameraActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(CameraActivity.this,
+                    new String[]{Manifest.permission.CAMERA}, 100);
         }
+
         btOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 100);
+            }
+        });
+        btSave.setOnClickListener(new View.OnClickListener() {
+            private View view;
+
+            @Override
+            public void onClick(View view) {
+
+                saveLocationAlternateTest(imageView.getDrawingCache());
+            }
+
+
+        });
+        btPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioPlayer("/data/data/com.example.navigationtest/app_audioDir", "12pm.mp3");
+            }
+        });
+
+        btStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaRecorder.stop();
+                releaseMediaPlayer();
+            }
+        });
+        btRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioRecorder();
             }
         });
     }
@@ -93,6 +143,51 @@ public class CameraActivity extends AppCompatActivity {
         return storageLocation.getAbsolutePath();
     }
 
+    public void audioPlayer(String path, String fileName){
+        {
+            try {
+                mediaPlayer.setDataSource(path + File.separator + fileName);
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void releaseMediaPlayer() {
+        try {
+            if (mediaPlayer != null) {
+                if (mediaPlayer.isPlaying())
+                    mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void audioRecorder(){
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String audioFileName = timeStamp + ".MPEG_4";
+        ContextWrapper cw = new ContextWrapper((getApplicationContext()));
+        File storageLocation = cw.getDir("audioDir", MODE_PRIVATE);
+        File path = new File(storageLocation, audioFileName);
+
+        mediaRecorder = new MediaRecorder();
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+        mediaRecorder.setOutputFile(path.getAbsolutePath());
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            mediaRecorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        mediaRecorder.start();
+    }
 
     /**
      * THIS NEEDS A DESCRIPTION
@@ -107,7 +202,7 @@ public class CameraActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
-            saveLocationAlternateTest(imageBitmap);
+            //saveLocationAlternateTest(imageBitmap);
             //Toast.makeText(context,"Image Saved.",Toast.LENGTH_SHORT).show();
         }
     }
