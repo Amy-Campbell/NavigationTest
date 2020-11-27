@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton btGallery, btSearch, btCamera;
+    ImageButton btGallery, btSearch, btCamera, btKeywords;
 
 
 
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btGallery = (ImageButton) findViewById(R.id.button_gallery);
         btSearch = (ImageButton) findViewById(R.id.button_search);
         btCamera = (ImageButton) findViewById(R.id.button_camera);
+        btKeywords = (ImageButton) findViewById(R.id.button_keywords);
 
 
 
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
                 launchCamera();
             }
         });
+        btKeywords.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                launchKeywords();
+            }
+        });
 
     }
 
@@ -64,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void launchCamera(){
         Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
+
+    }
+    private void launchKeywords(){
+        Intent intent = new Intent(this, KeywordsActivity.class);
         startActivity(intent);
 
     }

@@ -34,11 +34,11 @@ import java.util.Date;
 public class CameraActivity extends AppCompatActivity {
 
     Context context;
-    Button btOpen;
-    Button btSave;
-    Button btPlay;
-    Button btStop;
-    Button btRecord;
+    ImageButton btOpen;
+    ImageButton btSave;
+    ImageButton btPlay;
+    ImageButton btStop;
+    ImageButton btRecord;
     Activity activity;
     ImageButton btBack;
 
@@ -55,12 +55,12 @@ public class CameraActivity extends AppCompatActivity {
         context = this;
 
         imageView = findViewById(R.id.imageView);
-        btOpen = findViewById(R.id.bt_open);
+        btOpen = findViewById(R.id.button_open_camera);
         btBack = (ImageButton) findViewById(R.id.button_home);
-        btSave = findViewById(R.id.bt_save);
-        btPlay = findViewById(R.id.bt_play);
-        btStop = findViewById(R.id.bt_stop);
-        btRecord = findViewById(R.id.bt_record);
+        btSave = findViewById(R.id.bt_save_picture);
+        btPlay = findViewById(R.id.bt_play_audio);
+        btStop = findViewById(R.id.bt_stop_audio);
+        btRecord = findViewById(R.id.bt_record_audio);
 
         btBack.setOnClickListener(new View.OnClickListener(){
 

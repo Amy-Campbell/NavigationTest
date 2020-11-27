@@ -10,7 +10,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationTest">
-        <activity android:name=".CameraActivity"></activity>
+        <activity android:name=".AddNewKeywordActivity"></activity>
+        <activity android:name=".KeywordsActivity" />
+        <activity android:name=".CameraActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".FullImageActivity" />
         <activity android:name=".GalleryActivity" />
