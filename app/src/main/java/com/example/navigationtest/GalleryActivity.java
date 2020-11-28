@@ -14,19 +14,7 @@ import android.widget.ImageButton;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    public String[] titles = {"My Family (1957)",
-            "Baby Agatha (My Sister) on the left, next to Mom",
-            "Ben (My son) with his wife (Angela) and their eldest child (Ryan)",
-            "My Sister (Agatha) and Me. (1955)",
-            "Mom and Dad",
-            "Agatha (my sister) and her daughter, Elise",
-            "Me and my husband, Gregory, at our wedding. (1960)",
-            "Mom and Dad in 1993",
-            "My nieces, Elise and Charlotte",
-            "Portrait of my cousing Tabitha's family",
-            "Me and Agatha",
-            "Gregory in his Navy uniform",
-            "Name13"};
+
 
     private ImageButton btBack;
     @Override
@@ -43,10 +31,13 @@ public class GalleryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //add images to the adapter
         GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(new ImageAdapter(this));
 
 
+        //display the large image
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

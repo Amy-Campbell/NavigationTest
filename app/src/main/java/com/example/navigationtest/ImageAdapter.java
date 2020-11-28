@@ -1,11 +1,15 @@
 package com.example.navigationtest;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class ImageAdapter extends BaseAdapter {
     private Context context;
@@ -52,30 +56,35 @@ public class ImageAdapter extends BaseAdapter {
             "An image of Gregory in his Navy uniform",
             "Name13"};
 
-    public int[] dates = {
-            1957,
-            1963,
-            1999,
-            1955,
-            1950,
-            1983,
-            1960,
-            1993,
-            2000,
-            1997,
-            1964,
-            1939,
-            1956};
+    public String[] dates = {
+            "1957",
+            "1963",
+            "1999",
+            "1955",
+            "1950",
+            "1983",
+            "1960",
+            "1993",
+            "2000",
+            "1997",
+            "1964",
+            "1939",
+            "1956"};
 
 
     public ImageAdapter(Context con){
         this.context = con;
     }
 
+    public int getImageFromSD(){
+        return 0;
+
+    }
+
     @Override
     //returns length of image list
     public int getCount() {
-        return imageList.length;
+        return imageList.length + 1;
     }
 
     @Override
@@ -95,6 +104,7 @@ public class ImageAdapter extends BaseAdapter {
      * @param convertView
      * @param parent acts as a constraint for the child
      */
+
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
 
@@ -104,7 +114,24 @@ public class ImageAdapter extends BaseAdapter {
         imageView.setPadding(8, 8, 8, 8);
 
         //set image
-        imageView.setImageResource(imageList[position]);
+        if(position < imageList.length) {
+            imageView.setImageResource(imageList[position]);
+
+        }
+        else{
+            try{
+
+                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + CameraActivity.nameOfFile);
+                BitmapDrawable d = new BitmapDrawable(parent.getContext().getResources(), imageFile.getAbsolutePath());
+
+
+                imageView.setImageDrawable(d);
+
+            }
+            catch(Exception e){
+
+            }
+        }
         return imageView;
     }
 }

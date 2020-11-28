@@ -3,6 +3,7 @@ package com.example.navigationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class FullImageActivity extends AppCompatActivity {
 
@@ -37,18 +41,38 @@ public class FullImageActivity extends AppCompatActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
-        imageView.setImageResource(adapter.imageList[position]);
+
 
         //set the title
-        TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
-        titleTextView.setText(adapter.titles[position]);
+        if(position < adapter.imageList.length){
 
-        //set the description
-        TextView descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
-        descriptionTextView.setText(adapter.descriptions[position]);
+            imageView.setImageResource(adapter.imageList[position]);
 
-        //set the date
-        //TextView dateTextView = (TextView) findViewById(R.id.dateTextView);
-        //dateTextView.setText(adapter.dates[position]);
+            TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
+            titleTextView.setText(adapter.titles[position]);
+
+            //set the description
+            TextView descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
+            descriptionTextView.setText(adapter.descriptions[position]);
+
+            //set the date
+            TextView dateTextView = (TextView) findViewById(R.id.dateTextView);
+            dateTextView.setText(adapter.dates[position]);
+        }
+        else{
+            try{
+                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + CameraActivity.nameOfFile);
+                BitmapDrawable d = new BitmapDrawable(getResources(), imageFile.getAbsolutePath());
+
+
+                imageView.setImageDrawable(d);
+
+            }
+            catch(Exception e){
+                Toast.makeText(this,"could not load file",Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
     }
 }

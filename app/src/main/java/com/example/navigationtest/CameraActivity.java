@@ -13,6 +13,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ public class CameraActivity extends AppCompatActivity {
     ImageButton btRecord;
     Activity activity;
     ImageButton btBack;
+    static public String nameOfFile = null;
+    public static String imageStorageLocation = null;
 
     private ImageView imageView;
     MediaPlayer mediaPlayer = new MediaPlayer();
@@ -48,10 +51,15 @@ public class CameraActivity extends AppCompatActivity {
     private static String fileName = null;
     private static final String LOG_TAG = "AudioRecordTest";
 
+    static public String getNameOfFile(){
+        return nameOfFile;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        MediaRecorder recorder = null;
         context = this;
 
         imageView = findViewById(R.id.imageView);
@@ -61,6 +69,7 @@ public class CameraActivity extends AppCompatActivity {
         btPlay = findViewById(R.id.bt_play_audio);
         btStop = findViewById(R.id.bt_stop_audio);
         btRecord = findViewById(R.id.bt_record_audio);
+        String path;
 
         btBack.setOnClickListener(new View.OnClickListener(){
 
@@ -90,7 +99,8 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                saveLocationAlternateTest(imageView.getDrawingCache());
+                Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                saveLocationAlternateTest(bitmap);
             }
 
 
@@ -121,9 +131,10 @@ public class CameraActivity extends AppCompatActivity {
     private String saveLocationAlternateTest(Bitmap image){
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = timeStamp + ".png";
+        String imageFileName = timeStamp + ".jpg";
+        nameOfFile = timeStamp + ".jpg";
         ContextWrapper cw = new ContextWrapper((context.getApplicationContext()));
-        File storageLocation = cw.getDir("imageDir",context.MODE_PRIVATE);
+        File storageLocation = cw.getDir("imageDir",MODE_PRIVATE);
         File path = new File(storageLocation,imageFileName);
 
         FileOutputStream outWrite = null;
@@ -140,6 +151,7 @@ public class CameraActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        imageStorageLocation = storageLocation.getAbsolutePath();
         return storageLocation.getAbsolutePath();
     }
 
@@ -206,4 +218,6 @@ public class CameraActivity extends AppCompatActivity {
             //Toast.makeText(context,"Image Saved.",Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }
