@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -42,6 +43,8 @@ public class CameraActivity extends AppCompatActivity {
     ImageButton btRecord;
     Activity activity;
     ImageButton btBack;
+    EditText edtTitle;
+    EditText edtDescription;
     static public String nameOfFile = null;
     public static String imageStorageLocation = null;
 
@@ -69,6 +72,8 @@ public class CameraActivity extends AppCompatActivity {
         btPlay = findViewById(R.id.bt_play_audio);
         btStop = findViewById(R.id.bt_stop_audio);
         btRecord = findViewById(R.id.bt_record_audio);
+        edtDescription = findViewById(R.id.editDescription);
+        edtTitle = findViewById(R.id.editTitle);
         String path;
 
         btBack.setOnClickListener(new View.OnClickListener(){
@@ -132,7 +137,14 @@ public class CameraActivity extends AppCompatActivity {
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = timeStamp + ".jpg";
+
         nameOfFile = timeStamp + ".jpg";
+        ImageAdapter.storedImageList.add(nameOfFile);
+        ImageAdapter.storedDescriptionsList.add(edtDescription.getText().toString());
+        ImageAdapter.storedDatesList.add("2020");
+        ImageAdapter.storedTitlesList.add(edtTitle.getText().toString());
+
+
         ContextWrapper cw = new ContextWrapper((context.getApplicationContext()));
         File storageLocation = cw.getDir("imageDir",MODE_PRIVATE);
         File path = new File(storageLocation,imageFileName);

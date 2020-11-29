@@ -61,11 +61,21 @@ public class FullImageActivity extends AppCompatActivity {
         }
         else{
             try{
-                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + CameraActivity.nameOfFile);
+                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + ImageAdapter.storedImageList.get(position - ImageAdapter.imageList.length));
                 BitmapDrawable d = new BitmapDrawable(getResources(), imageFile.getAbsolutePath());
 
 
                 imageView.setImageDrawable(d);
+
+                TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
+                titleTextView.setText(adapter.storedTitlesList.get(position - ImageAdapter.imageList.length));
+
+                TextView descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
+                descriptionTextView.setText(adapter.storedDescriptionsList.get(position - ImageAdapter.imageList.length));
+
+                TextView dateTextView = (TextView) findViewById(R.id.dateTextView);
+                dateTextView.setText(adapter.storedDatesList.get(position - ImageAdapter.imageList.length));
+
 
             }
             catch(Exception e){

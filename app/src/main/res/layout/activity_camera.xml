@@ -42,7 +42,8 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="8dp"
-        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_alignParentLeft="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/capture"/>
 
@@ -51,10 +52,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:layout_below="@id/button_open_camera"
         android:gravity="center"
         android:text="Take Picture"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
         android:textColor="@color/indigo"
         android:textStyle="bold"
         android:layout_marginBottom="30dp"/>
@@ -63,8 +65,9 @@
         android:id="@+id/bt_save_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:layout_below="@id/textView"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
         android:background="@color/white"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
@@ -75,32 +78,65 @@
 
     <TextView
         android:id="@+id/textView2"
+        android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/bt_save_picture"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:text="Save Picture"
+        android:layout_marginHorizontal="30dp"
         android:textColor="@color/indigo"
         android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:adjustViewBounds="true"
-        android:scaleType="center"
-        android:layout_below="@id/textView2"
+        android:scaleType="fitCenter"
+        android:layout_below="@id/top_toolbar"
+        android:layout_toRightOf="@id/bt_save_picture"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"/>
+
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:background="@color/grey"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Add Title"
+        android:padding="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/indigo"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/editDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTitle"
+        android:background="@color/grey"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Add Description"
+        android:padding="8dp"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginVertical="8dp"
-        android:layout_marginHorizontal="8dp"/>
+        android:textColor="@color/indigo"
+        android:textSize="25sp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:padding="8dp"
-        android:layout_below="@id/imageView">
+        android:layout_alignParentBottom="true">
 
         <ImageButton
             android:id="@+id/bt_play_audio"

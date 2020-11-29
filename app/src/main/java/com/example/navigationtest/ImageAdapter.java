@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImageAdapter extends BaseAdapter {
     private Context context;
     //public int[] imageList = {R.drawable.cup, R.drawable.candyapple, R.drawable.monster,R.drawable.pizza,R.drawable.skull,R.drawable.spider,R.drawable.werewolf,R.drawable.witch};
-    public int[] imageList = {
+    public static int[] imageList = {
             R.drawable.image0,
             R.drawable.image1,
             R.drawable.image2,
@@ -27,6 +29,11 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.image9,
             R.drawable.image10,
             R.drawable.image11};
+
+    static public List<String> storedImageList = new ArrayList<String>();
+    static public List<String> storedDescriptionsList = new ArrayList<String>();
+    static public List<String> storedDatesList = new ArrayList<String>();
+    static public List<String> storedTitlesList = new ArrayList<String>();
 
     public String[] titles = {"My Family",
             "Agatha and Mom",
@@ -84,7 +91,7 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     //returns length of image list
     public int getCount() {
-        return imageList.length + 1;
+        return imageList.length + storedImageList.size();
     }
 
     @Override
@@ -109,7 +116,7 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(context);
 
         //scale the image
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setLayoutParams(new GridView.LayoutParams(450,450));
         imageView.setPadding(8, 8, 8, 8);
 
@@ -121,7 +128,7 @@ public class ImageAdapter extends BaseAdapter {
         else{
             try{
 
-                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + CameraActivity.nameOfFile);
+                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + storedImageList.get(position - imageList.length));
                 BitmapDrawable d = new BitmapDrawable(parent.getContext().getResources(), imageFile.getAbsolutePath());
 
 
