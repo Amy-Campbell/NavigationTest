@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ public class ListDataActivity extends AppCompatActivity{
     private static final String TAG = "ListDataActivity";
 
     DatabaseHelper mDatabaseHelper;
+    ImageButton btBack;
 
     private ListView mListView;
 
@@ -27,6 +30,16 @@ public class ListDataActivity extends AppCompatActivity{
         setContentView(R.layout.list_layout);
         mListView = (ListView) findViewById(R.id.listView);
         mDatabaseHelper = new DatabaseHelper(this);
+
+        btBack = (ImageButton) findViewById(R.id.button_home);
+
+        btBack.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                finish();
+            }
+        });
 
         populateListView();
     }

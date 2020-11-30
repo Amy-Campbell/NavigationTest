@@ -73,7 +73,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="8dp"
-            app:srcCompat="@drawable/magnify" />
+            app:srcCompat="@drawable/text" />
 
         <ImageButton
             android:id="@+id/button_camera"
@@ -102,7 +102,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="8dp"
-            app:srcCompat="@drawable/text" />
+            app:srcCompat="@drawable/web" />
 
 
 

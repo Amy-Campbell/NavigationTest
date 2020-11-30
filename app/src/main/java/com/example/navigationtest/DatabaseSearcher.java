@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -13,17 +14,28 @@ public class DatabaseSearcher extends AppCompatActivity {
     private static final String TAG ="DatabaseSearcher";
 
     DatabaseHelper mDatabaseHelper;
-    private Button btnAdd, btnViewData;
+    ImageButton btnAdd, btnViewData;
     private EditText editText;
+    private ImageButton btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.database_search);//The xml file to be used
         editText = (EditText) findViewById(R.id.editText);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnViewData = (Button) findViewById(R.id.btnView);
+        btnAdd = (ImageButton) findViewById(R.id.btnAdd);
+        btnViewData = (ImageButton) findViewById(R.id.btnView);
         mDatabaseHelper = new DatabaseHelper(this);
+
+        btBack = (ImageButton) findViewById(R.id.button_home);
+
+        btBack.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                finish();
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener(){
             @Override

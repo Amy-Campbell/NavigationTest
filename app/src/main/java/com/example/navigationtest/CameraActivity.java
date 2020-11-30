@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -103,9 +104,16 @@ public class CameraActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                try{
+                    Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                    saveLocationAlternateTest(bitmap);
+                    Toast.makeText(CameraActivity.this,"Image Saved.",Toast.LENGTH_LONG).show();
+                }
+                catch(Exception e){
+                    Toast.makeText(CameraActivity.this,"Could not save.",Toast.LENGTH_LONG).show();
+                }
 
-                Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                saveLocationAlternateTest(bitmap);
+
             }
 
 
