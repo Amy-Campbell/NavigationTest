@@ -19,13 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationTest">
-        <activity android:name=".AddNewKeywordActivity"></activity>
+        <activity android:name=".WebActivity"></activity>
+        <activity android:name=".AddNewKeywordActivity" />
         <activity android:name=".KeywordsActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".FullImageActivity" />
         <activity android:name=".GalleryActivity" />
-        <activity android:name=".ListDataActivity"/>
+        <activity android:name=".DatabaseSearcher" />
+        <activity android:name=".ListDataActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

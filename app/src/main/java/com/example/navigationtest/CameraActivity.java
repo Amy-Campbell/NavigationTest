@@ -139,7 +139,7 @@ public class CameraActivity extends AppCompatActivity {
         String imageFileName = timeStamp + ".jpg";
 
         nameOfFile = timeStamp + ".jpg";
-        ImageAdapter.storedImageList.add(nameOfFile);
+        ImageAdapter.storedImageList.add("/data/data/com.example.navigationtest/app_imageDir/"+nameOfFile);
         ImageAdapter.storedDescriptionsList.add(edtDescription.getText().toString());
         ImageAdapter.storedDatesList.add("2020");
         ImageAdapter.storedTitlesList.add(edtTitle.getText().toString());

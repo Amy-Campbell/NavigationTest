@@ -2,6 +2,7 @@ package com.example.navigationtest;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,7 +10,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +93,7 @@ public class ImageAdapter extends BaseAdapter {
 
     }
 
+
     @Override
     //returns length of image list
     public int getCount() {
@@ -127,12 +133,19 @@ public class ImageAdapter extends BaseAdapter {
         }
         else{
             try{
+                if ((storedImageList.get(position - imageList.length)).charAt(0) == 'h'){
+                    Glide.with(parent.getContext()).load(storedImageList.get(position - imageList.length)).into(imageView);
+                }
+                else{
+                    File imageFile = new File(storedImageList.get(position - imageList.length));
+                    BitmapDrawable d = new BitmapDrawable(parent.getContext().getResources(), imageFile.getAbsolutePath());
 
-                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + storedImageList.get(position - imageList.length));
-                BitmapDrawable d = new BitmapDrawable(parent.getContext().getResources(), imageFile.getAbsolutePath());
+
+                    imageView.setImageDrawable(d);
+                }
 
 
-                imageView.setImageDrawable(d);
+
 
             }
             catch(Exception e){
@@ -140,5 +153,14 @@ public class ImageAdapter extends BaseAdapter {
             }
         }
         return imageView;
+    }
+    public static Drawable LoadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

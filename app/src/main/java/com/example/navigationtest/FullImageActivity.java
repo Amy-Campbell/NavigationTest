@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 
 public class FullImageActivity extends AppCompatActivity {
@@ -61,11 +63,16 @@ public class FullImageActivity extends AppCompatActivity {
         }
         else{
             try{
-                File imageFile = new File("/data/data/com.example.navigationtest/app_imageDir/" + ImageAdapter.storedImageList.get(position - ImageAdapter.imageList.length));
-                BitmapDrawable d = new BitmapDrawable(getResources(), imageFile.getAbsolutePath());
+                if ((adapter.storedImageList.get(position - adapter.imageList.length)).charAt(0) == 'h'){
+                    Glide.with(this).load(adapter.storedImageList.get(position - adapter.imageList.length)).into(imageView);
+                }
+                else{
+                    File imageFile = new File(adapter.storedImageList.get(position - adapter.imageList.length));
+                    BitmapDrawable d = new BitmapDrawable(getResources(), imageFile.getAbsolutePath());
 
 
-                imageView.setImageDrawable(d);
+                    imageView.setImageDrawable(d);
+                }
 
                 TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
                 titleTextView.setText(adapter.storedTitlesList.get(position - ImageAdapter.imageList.length));
