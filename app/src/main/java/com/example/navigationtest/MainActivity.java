@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void launchSearch(){
-        Intent intent = new Intent(this, SearchActivity.class);
+        Intent intent = new Intent(this, DatabaseSearcher.class);
         startActivity(intent);
 
     }
