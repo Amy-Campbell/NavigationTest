@@ -63,16 +63,16 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        MediaRecorder recorder = null;
+        //MediaRecorder recorder = null;
         context = this;
 
         imageView = findViewById(R.id.imageView);
         btOpen = findViewById(R.id.button_open_camera);
         btBack = (ImageButton) findViewById(R.id.button_home);
         btSave = findViewById(R.id.bt_save_picture);
-        btPlay = findViewById(R.id.bt_play_audio);
+        /*btPlay = findViewById(R.id.bt_play_audio);
         btStop = findViewById(R.id.bt_stop_audio);
-        btRecord = findViewById(R.id.bt_record_audio);
+        btRecord = findViewById(R.id.bt_record_audio);*/
         edtDescription = findViewById(R.id.editDescription);
         edtTitle = findViewById(R.id.editTitle);
         String path;
@@ -118,14 +118,14 @@ public class CameraActivity extends AppCompatActivity {
 
 
         });
-        btPlay.setOnClickListener(new View.OnClickListener() {
+        /*btPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 audioPlayer("/data/data/com.example.navigationtest/app_audioDir", "12pm.mp3");
             }
-        });
+        });*/
 
-        btStop.setOnClickListener(new View.OnClickListener() {
+        /*btStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mediaRecorder.stop();
@@ -137,7 +137,7 @@ public class CameraActivity extends AppCompatActivity {
             public void onClick(View v) {
                 audioRecorder();
             }
-        });
+        });*/
     }
 
     //images get saved to data > data > com.example.cmpt385 > app_imageDir
@@ -175,7 +175,7 @@ public class CameraActivity extends AppCompatActivity {
         return storageLocation.getAbsolutePath();
     }
 
-    public void audioPlayer(String path, String fileName){
+    /*public void audioPlayer(String path, String fileName){
         {
             try {
                 mediaPlayer.setDataSource(path + File.separator + fileName);
@@ -185,9 +185,9 @@ public class CameraActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
-    private void releaseMediaPlayer() {
+    /*private void releaseMediaPlayer() {
         try {
             if (mediaPlayer != null) {
                 if (mediaPlayer.isPlaying())
@@ -221,12 +221,13 @@ public class CameraActivity extends AppCompatActivity {
         mediaRecorder.start();
     }
 
-    /**
+    *//**
      * THIS NEEDS A DESCRIPTION
      * @param requestCode
      * @param data
      * @param resultCode
      */
+
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
