@@ -11,7 +11,20 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
-
+/*********************************************************************************
+ * GalleryActivity
+ *
+ * Description:
+ * This class displays all images in a gridView Gallery
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date: November 24 2020
+ *
+ * Input: touch sensor
+ * Output: image display
+ *
+ ********************************************************************************/
 public class GalleryActivity extends AppCompatActivity {
 
 
@@ -22,6 +35,7 @@ public class GalleryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
+        //set up listeners
         btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){

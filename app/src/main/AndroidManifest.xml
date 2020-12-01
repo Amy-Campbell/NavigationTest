@@ -23,7 +23,6 @@
         <activity android:name=".AddNewKeywordActivity" />
         <activity android:name=".KeywordsActivity" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".SearchActivity" />
         <activity android:name=".FullImageActivity" />
         <activity android:name=".GalleryActivity" />
         <activity android:name=".DatabaseSearcher" />

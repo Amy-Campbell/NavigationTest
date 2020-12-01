@@ -9,7 +9,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
+/*********************************************************************************
+ * AddNewKeywordActivity
+ *
+ * Description:
+ * This class allows users to add images to the gallery from the internet
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date: November 24 2020
+ *
+ * Input: touch sensor, keyboard input, web search
+ * Output: none
+ *
+ ********************************************************************************/
 public class WebActivity extends AppCompatActivity {
     ImageButton btAdd;
     EditText edtTitle;
@@ -28,6 +41,7 @@ public class WebActivity extends AppCompatActivity {
         edtTitle = findViewById(R.id.editTitle);
         edtURL = findViewById(R.id.editURL);
 
+        //set up listeners
         btBack.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -39,6 +53,7 @@ public class WebActivity extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             private View view;
 
+            //get input from text fields and add to storage
             @Override
             public void onClick(View view) {
                 ImageAdapter.storedImageList.add(edtURL.getText().toString());

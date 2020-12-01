@@ -8,7 +8,20 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-
+/*********************************************************************************
+ * Database Searcher
+ *
+ * Description:
+ * This class allows users to add text to the SQLite database
+ *
+ *Team Name: Team 10+10
+ * Authors: Andrew Dunham
+ * Date: November 24 2020
+ *
+ * Input: Keyboard Input
+ * Output: Confirmation Toast
+ *
+ ********************************************************************************/
 public class DatabaseSearcher extends AppCompatActivity {
 
     private static final String TAG ="DatabaseSearcher";
@@ -27,6 +40,7 @@ public class DatabaseSearcher extends AppCompatActivity {
         btnViewData = (ImageButton) findViewById(R.id.btnView);
         mDatabaseHelper = new DatabaseHelper(this);
 
+        //initialize button listeners
         btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){
@@ -60,6 +74,7 @@ public class DatabaseSearcher extends AppCompatActivity {
 
     }
 
+    //insert data to database
     public void AddData (String newEntry){
         boolean insertData = mDatabaseHelper.addData(newEntry);
 

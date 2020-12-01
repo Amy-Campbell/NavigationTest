@@ -1,5 +1,18 @@
 package com.example.navigationtest.db;
-
+/*********************************************************************************
+ * AppDatabase
+ *
+ * Description:
+ * This class holds the room database
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date:November 24 2020
+ *
+ * Input:none
+ * Output: none
+ *
+ ********************************************************************************/
 import android.content.Context;
 
 import androidx.room.Database;

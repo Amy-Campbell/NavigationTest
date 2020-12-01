@@ -17,7 +17,20 @@ import com.example.navigationtest.db.AppDatabase;
 import com.example.navigationtest.db.Keyword;
 
 import java.util.List;
-
+/*********************************************************************************
+ * KeywordsActivity
+ *
+ * Description:
+ * This class allows users to add keywords to Room Persistence Library
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date: November 24 2020
+ *
+ * Input: Keyboard Input
+ * Output: none
+ *
+ ********************************************************************************/
 public class KeywordsActivity extends AppCompatActivity {
     private KeywordListAdapter keywordListAdapter;
     Context context = this;
@@ -53,6 +66,7 @@ public class KeywordsActivity extends AppCompatActivity {
         loadUserList();
     }
 
+    //add components to view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -63,6 +77,7 @@ public class KeywordsActivity extends AppCompatActivity {
         recyclerView.setAdapter(keywordListAdapter);
     }
 
+    //load data
     private void loadUserList() {
         //get records from database
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());

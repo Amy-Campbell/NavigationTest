@@ -12,7 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.navigationtest.db.Keyword;
 
 import java.util.List;
-
+/*********************************************************************************
+ * KeywordListAdapter
+ *
+ * Description:
+ * This class acts as an adapter between the database and the display
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date: November 24 2020
+ *
+ * Input: none
+ * Output: none
+ *
+ ********************************************************************************/
 public class KeywordListAdapter extends RecyclerView.Adapter<KeywordListAdapter.MyViewHolder> {
 
     private Context context;

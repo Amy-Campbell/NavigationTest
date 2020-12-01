@@ -9,7 +9,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.TableLayout;
-
+/*********************************************************************************
+ * AddNewKeywordActivity
+ *
+ * Description:
+ * This class allows communication between database and application
+ *
+ *Team Name: Team 10+10
+ * Authors: Andrew Dunham
+ * Date: November 24 2020
+ *
+ * Input: none
+ * Output: none
+ *
+ ********************************************************************************/
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";

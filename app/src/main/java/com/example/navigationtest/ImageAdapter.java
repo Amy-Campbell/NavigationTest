@@ -17,7 +17,20 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
+/*********************************************************************************
+ * ImageAdapter
+ *
+ * Description:
+ * This class acts as adapter between grid in the gallery class and data storage
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell, Andrew Dunham, Jimmy Kha, Terrence Yang
+ * Date: November 24 2020
+ *
+ * Input: none
+ * Output: none
+ *
+ ********************************************************************************/
 public class ImageAdapter extends BaseAdapter {
     private Context context;
     //public int[] imageList = {R.drawable.cup, R.drawable.candyapple, R.drawable.monster,R.drawable.pizza,R.drawable.skull,R.drawable.spider,R.drawable.werewolf,R.drawable.witch};
@@ -35,11 +48,13 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.image10,
             R.drawable.image11};
 
+    //image storage
     static public List<String> storedImageList = new ArrayList<String>();
     static public List<String> storedDescriptionsList = new ArrayList<String>();
     static public List<String> storedDatesList = new ArrayList<String>();
     static public List<String> storedTitlesList = new ArrayList<String>();
 
+    //default images
     public String[] titles = {"My Family",
             "Agatha and Mom",
             "Ben's Family",
@@ -101,6 +116,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     @Override
+    //get image
     public Object getItem(int position) {
         return null;
     }
@@ -118,6 +134,7 @@ public class ImageAdapter extends BaseAdapter {
      * @param parent acts as a constraint for the child
      */
 
+    //set image
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
 
@@ -134,9 +151,11 @@ public class ImageAdapter extends BaseAdapter {
         else{
             try{
                 if ((storedImageList.get(position - imageList.length)).charAt(0) == 'h'){
+                    //load image from web URL
                     Glide.with(parent.getContext()).load(storedImageList.get(position - imageList.length)).into(imageView);
                 }
                 else{
+                    //load image from internal storage
                     File imageFile = new File(storedImageList.get(position - imageList.length));
                     BitmapDrawable d = new BitmapDrawable(parent.getContext().getResources(), imageFile.getAbsolutePath());
 
@@ -154,6 +173,8 @@ public class ImageAdapter extends BaseAdapter {
         }
         return imageView;
     }
+
+    //load from web URL
     public static Drawable LoadImageFromWebOperations(String url) {
         try {
             InputStream is = (InputStream) new URL(url).getContent();

@@ -10,7 +10,20 @@ import android.widget.ImageButton;
 
 import com.example.navigationtest.db.AppDatabase;
 import com.example.navigationtest.db.Keyword;
-
+/*********************************************************************************
+ * AddNewKeywordActivity
+ *
+ * Description:
+ * This class allows users to add keywords to Room Persistence Library
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date: November 24 2020
+ *
+ * Input: Keyboard Input
+ * Output: none
+ *
+ ********************************************************************************/
 public class AddNewKeywordActivity extends AppCompatActivity {
 
     private ImageButton btBack;
@@ -20,6 +33,7 @@ public class AddNewKeywordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_keyword);
 
+        //set up back button
         btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){
@@ -30,6 +44,7 @@ public class AddNewKeywordActivity extends AppCompatActivity {
             }
         });
 
+        //get input from textbox
         final EditText NameInput =  findViewById(R.id.NameInput);
         ImageButton saveButton =  findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +55,7 @@ public class AddNewKeywordActivity extends AppCompatActivity {
         });
     }
 
+    //save the keyword to database
     private void saveNewKeyword(String name) {
         AppDatabase db  = AppDatabase.getDbInstance(this.getApplicationContext());
 

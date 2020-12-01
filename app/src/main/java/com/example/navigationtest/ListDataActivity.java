@@ -14,7 +14,20 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+/*********************************************************************************
+ * List Data Activity
+ *
+ * Description:
+ * This class displays data from SQLite database in a list
+ *
+ *Team Name: Team 10+10
+ * Authors: Andrew Dunham
+ * Date: November 24 2020
+ *
+ * Input: none
+ * Output: list text data from database
+ *
+ ********************************************************************************/
 public class ListDataActivity extends AppCompatActivity{
 
     private static final String TAG = "ListDataActivity";
@@ -31,6 +44,7 @@ public class ListDataActivity extends AppCompatActivity{
         mListView = (ListView) findViewById(R.id.listView);
         mDatabaseHelper = new DatabaseHelper(this);
 
+        //initialize buttons
         btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){
@@ -44,6 +58,7 @@ public class ListDataActivity extends AppCompatActivity{
         populateListView();
     }
 
+    //display data in ListView
     private void populateListView(){
         Log.d(TAG, "populateListView: Displaying data in the ListView");
 

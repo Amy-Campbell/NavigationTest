@@ -21,7 +21,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+/*********************************************************************************
+ * AddNewKeywordActivity
+ *
+ * Description:
+ * This class runs on launch and serves as home screen for navigation
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell, Andrew Dunham, Terrence Yang, Jimmy Kha
+ * Date: October 30 2020
+ *
+ * Input: touch sensor
+ * Output: none
+ *
+ ********************************************************************************/
 public class MainActivity extends AppCompatActivity {
     ImageButton btGallery, btSearch, btCamera, btKeywords;
 
@@ -31,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // get the reference of Button's
+
+        // get the reference of Buttons
 
         btGallery = (ImageButton) findViewById(R.id.button_gallery);
         btSearch = (ImageButton) findViewById(R.id.button_search);
@@ -41,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //set up listeners
         btGallery.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -76,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //launch individual activities
     private void launchGallery(){
         Intent intent = new Intent(this, GalleryActivity.class);
         startActivity(intent);
@@ -101,19 +117,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            // Log exception
-            return null;
-        }
-    }
+
 
 }

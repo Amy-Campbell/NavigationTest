@@ -16,7 +16,20 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
-
+/*********************************************************************************
+ * AddNewKeywordActivity
+ *
+ * Description:
+ * This class allows users to add keywords to Room Persistence Library
+ *
+ *Team Name: Team 10+10
+ * Authors: Amy Campbell
+ * Date: November 24 2020
+ *
+ * Input: none
+ * Output: display image and text
+ *
+ ********************************************************************************/
 public class FullImageActivity extends AppCompatActivity {
 
     private ImageButton btBack;
@@ -26,6 +39,7 @@ public class FullImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_image);
 
+        //initialize button listeners
         btBack = (ImageButton) findViewById(R.id.button_home);
 
         btBack.setOnClickListener(new View.OnClickListener(){
@@ -74,6 +88,7 @@ public class FullImageActivity extends AppCompatActivity {
                     imageView.setImageDrawable(d);
                 }
 
+                //store image information
                 TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
                 titleTextView.setText(adapter.storedTitlesList.get(position - ImageAdapter.imageList.length));
 

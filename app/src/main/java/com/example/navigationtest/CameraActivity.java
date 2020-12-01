@@ -34,6 +34,20 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*********************************************************************************
+ * CameraActivity
+ *
+ * Description:
+ * This class is responsible for running the application
+ *
+ *Team Name: Team 10+10
+ * Authors: Jimmy Kha, Amy Campbell
+ * Date: October 10 2020
+ *
+ * Input: Camera Input, Audio Recorder Input
+ * Output: Image, Toast
+ *
+ ********************************************************************************/
 public class CameraActivity extends AppCompatActivity {
 
     Context context;
@@ -60,6 +74,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     @Override
+    //run when activity launches
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
@@ -77,6 +92,7 @@ public class CameraActivity extends AppCompatActivity {
         edtTitle = findViewById(R.id.editTitle);
         String path;
 
+        //set up button listeners
         btBack.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -85,12 +101,15 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
+        //check permission to use device camera
         if (ContextCompat.checkSelfPermission(CameraActivity.this,
                 Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(CameraActivity.this,
                     new String[]{Manifest.permission.CAMERA}, 100);
         }
 
+
+        //initialize button listeners
         btOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,12 +159,13 @@ public class CameraActivity extends AppCompatActivity {
         });*/
     }
 
-    //images get saved to data > data > com.example.cmpt385 > app_imageDir
+    //images get saved to data > data > com.example.navigationtest > app_imageDir
     private String saveLocationAlternateTest(Bitmap image){
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = timeStamp + ".jpg";
 
+        //save images to ArrayList
         nameOfFile = timeStamp + ".jpg";
         ImageAdapter.storedImageList.add("/data/data/com.example.navigationtest/app_imageDir/"+nameOfFile);
         ImageAdapter.storedDescriptionsList.add(edtDescription.getText().toString());
@@ -153,6 +173,7 @@ public class CameraActivity extends AppCompatActivity {
         ImageAdapter.storedTitlesList.add(edtTitle.getText().toString());
 
 
+        //get path for file storage
         ContextWrapper cw = new ContextWrapper((context.getApplicationContext()));
         File storageLocation = cw.getDir("imageDir",MODE_PRIVATE);
         File path = new File(storageLocation,imageFileName);
@@ -228,6 +249,7 @@ public class CameraActivity extends AppCompatActivity {
      * @param resultCode
      */
 
+    //display the image in imageView
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
