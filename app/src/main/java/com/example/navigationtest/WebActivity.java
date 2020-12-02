@@ -16,7 +16,7 @@ import android.widget.Toast;
  * This class allows users to add images to the gallery from the internet
  *
  *Team Name: Team 10+10
- * Authors: Amy Campbell
+ * Authors: Amy Campbell with help from https://www.youtube.com/watch?v=4UFNT6MhIlA
  * Date: November 24 2020
  *
  * Input: touch sensor, keyboard input, web search

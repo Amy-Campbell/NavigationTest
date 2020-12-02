@@ -17,7 +17,7 @@ import com.example.navigationtest.db.Keyword;
  * This class allows users to add keywords to Room Persistence Library
  *
  *Team Name: Team 10+10
- * Authors: Amy Campbell
+ * Authors: Amy Campbell with help from https://www.youtube.com/watch?v=ONb_MuPBBlg&t=465s
  * Date: November 24 2020
  *
  * Input: Keyboard Input
